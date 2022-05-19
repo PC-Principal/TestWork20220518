@@ -60,14 +60,14 @@ LEFT JOIN project AS t3 ON t1.project_id = t3.project_id
 WHERE DATE(t1.create_date) = DATE(DATE_SUB(NOW(), INTERVAL 1 DAY)) AND LENGTH(t1.content) > 200;
 
 
-/* Запрос на задание SQL №1 */
+/* Запрос на задание SQL №2 */
 SELECT t1.`name` FROM project AS t1 WHERE t1.project_id 
 IN (SELECT t2.project_id FROM user_report AS t2 WHERE DATE(t2.create_date) = '2022-05-17' AND t2.expence < 1)
 OR t1.project_id
 NOT IN (SELECT t3.project_id FROM user_report AS t3 WHERE DATE(t3.create_date) = '2022-05-17');
 
 
-/* Запрос на задание SQL №2 */
+/* Запрос на задание SQL №4 */
 SELECT t3.fms,t2.`name`,case when SUM(t1.expence) = 0 then 1 
 ELSE SUM(t1.expence) END AS 't1.expence_culc'
 FROM user_report AS t1
